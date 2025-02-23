@@ -43,16 +43,7 @@ const Emp_Management = () => {
             className="text-blue-500 text-2xl" />,
             onClick: () => navigate("/emp-details"),
         },
-        {
-            title: "Employee Edit Details",
-            count: data.allowanceCount, // Display allowanceCount as a placeholder
-            label: "Edit Details",
-            bgColor: "bg-blue-50",
-            iconBg: "border-green-400",
-            icon: <LiaUserEditSolid 
-            className="text-blue-500 text-2xl" />,
-            onClick: () => navigate("/history-logged"),
-        },
+       
     ];
 
     useEffect(() => {
@@ -62,7 +53,7 @@ const Emp_Management = () => {
 
                 // Fetch attendance stats
                 const response = await fetch(
-                    `${API_URL}/v1/hris/employees/getAttendanceStats`
+                    `http://localhost:8590/v1/hris/employees/getAttendanceStats`
                 );
                 const result = await response.json();
 
@@ -78,7 +69,7 @@ const Emp_Management = () => {
 
                 // Fetch absent workforce count
                 const absentResponse = await fetch(
-                    `${API_URL}/v1/hris/attendence/getNotAttendCount?startDate=${today}&endDate=${today}`
+                    `http://localhost:8590/v1/hris/attendence/getNotAttendCount?startDate=${today}&endDate=${today}`
                 );
                 const absentResult = await absentResponse.json();
 
@@ -96,7 +87,7 @@ const Emp_Management = () => {
 
                 // Fetch allowance and deduction counts
                 const adResponse = await fetch(
-                    `${API_URL}/v1/hris/payroll/allowances-deductions-count`
+                    `http://localhost:8590/v1/hris/payroll/allowances-deductions-count`
                 );
                 const adResult = await adResponse.json();
 
@@ -148,8 +139,8 @@ const Emp_Management = () => {
                            
                            
                         </div>
-                        <button className="mt-auto bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600">
-                            View
+                        <button className="mt-auto bg-yellow-300 text-black rounded-lg px-4 py-2 hover:bg-black hover:text-white">
+                        View
                         </button>
                     </div>
                 ))}
